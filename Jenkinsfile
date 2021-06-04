@@ -17,7 +17,7 @@ pipeline {
         steps {
             script {
                 pushToGithub(
-                    githubRepo: "Cray-HPE/keycloak-rsa-cli",
+                    githubRepo: "Cray-HPE/cray_keycloak_rsa",
                     pemSecretId: "githubapp-stash-sync",
                     githubAppId: "91129",
                     githubAppInstallationId: "13313749"

@@ -1,5 +1,9 @@
 # Changelog
 
+### v0.4 - 2023-07-07
+
+* Update dependencies
+
 ### v0.3 - 2019-10-22
 
 * Reset error message when switching between OTP and push

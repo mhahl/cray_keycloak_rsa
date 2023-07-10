@@ -1,5 +1,6 @@
 name: depup
 on:
+  push:
   schedule:
     - cron:  '14 14 * * *'
   workflow_dispatch:

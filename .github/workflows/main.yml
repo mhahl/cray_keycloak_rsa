@@ -15,7 +15,7 @@ jobs:
           distribution: 'temurin'
 
       - name: build rsa-plugin-cli
-        run: mvn --batch-mode --update-snapshots -f package
+        run: mvn --batch-mode --update-snapshots -f rsa-plugin-cli
 
       - name: build rsa-plugin-provider
-        run: mvn --batch-mode --update-snapshots -f package
+        run: mvn --batch-mode --update-snapshots -f rsa-plugin-provider

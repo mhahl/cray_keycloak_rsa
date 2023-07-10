@@ -10,7 +10,8 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '20.0.1+9'
+          java-version: '20'
+          distribution: 'oracle'
 
       - name: build rsa-plugin-cli
         run: mvn --batch-mode --update-snapshots -f rsa-plugin-cli package

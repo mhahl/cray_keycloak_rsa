@@ -1,0 +1,57 @@
+name: Build and Test
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 22
+        uses: actions/setup-java@v3
+        with:
+          java-version: '22'
+
+      - name: version
+        run: echo "::set-output name=version::$(date +%F)"
+        id: version
+
+      - name: build rsa-plugin-cli
+        run: mvn --batch-mode --update-snapshots -f rsa-plugin-cli package
+
+      - name: build rsa-plugin-provider
+        run: mvn --batch-mode --update-snapshots -f rsa-plugin-provider package
+
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: upload rsa plugin provider artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: rsa-plugin-provider/target/RSA-Plugin-Provider.jar
+          asset_name: RSA-Plugin-Provider.jar
+          asset_content_type: application/zip
+
+      - name: upload rsa plugin cli artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: rsa-plugin-provider/target/RSA-Plugin-Provider.jar
+          asset_name: RSA-Plugin-Provider.jar
+          asset_content_type: application/zip

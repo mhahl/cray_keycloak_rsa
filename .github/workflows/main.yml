@@ -1,17 +1,16 @@
 name: Build and Test
-
 on: [push]
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 17
+
+      - name: Set up JDK 22
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '22'
           distribution: 'temurin'
 
       - name: build rsa-plugin-cli
@@ -19,3 +18,5 @@ jobs:
 
       - name: build rsa-plugin-provider
         run: mvn --batch-mode --update-snapshots -f rsa-plugin-provider package
+
+

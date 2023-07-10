@@ -7,11 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up JDK 22
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '22'
-          distribution: 'temurin'
+          java-version: '20.0.1+9'
 
       - name: build rsa-plugin-cli
         run: mvn --batch-mode --update-snapshots -f rsa-plugin-cli package

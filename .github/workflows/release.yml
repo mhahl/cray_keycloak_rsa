@@ -53,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: rsa-plugin-provider/target/RSA-CLI-Provider.jar
+          asset_path: rsa-plugin-cli/target/RSA-CLI-Provider.jar
           asset_name: RSA-CLI-Provider.jar
           asset_content_type: application/zip

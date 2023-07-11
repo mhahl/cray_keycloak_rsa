@@ -23,7 +23,6 @@ class Endpoint {
     private Logger _log = Logger.getLogger(getClass().getName());
     private String _authToken;
     private Configuration _config;
-    private List<String> excludedEndpointPrints = Collections.emptyList(); //Arrays.asList(ENDPOINT_AUTH);
 
     Endpoint(Configuration config) {
         this._config = config;
@@ -67,7 +66,7 @@ class Endpoint {
 
                 if (method.equals(POST)){
                     OutputStream os = con.getOutputStream();
-                    os.write(payload.toString().getBytes());
+                    os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
                     os.close();
                 }
 
@@ -76,7 +75,7 @@ class Endpoint {
                 if (responseCode == HttpURLConnection.HTTP_OK) { // success
 
                     BufferedReader in = new BufferedReader(new InputStreamReader(
-                            con.getInputStream()));
+                            con.getInputStream(), StandardCharsets.UTF_8));
                     String inputLine;
                     StringBuffer response = new StringBuffer();
 

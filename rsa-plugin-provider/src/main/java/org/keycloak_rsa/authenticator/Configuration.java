@@ -50,7 +50,7 @@ class Configuration {
     }
 
     String getVerifyEndpoint() {
-        return _verifyEndpoint == "" ? DEFAULT_VERIFY_ENDPOINT : _verifyEndpoint;
+        return _verifyEndpoint.equals("") ? DEFAULT_VERIFY_ENDPOINT : _verifyEndpoint;
     }
     
     String getClientId() {

@@ -43,6 +43,7 @@ public class RSAAuthenticator implements org.keycloak.authentication.Authenticat
         _sharedUsername = _config.getSharedUsername();
 
         int tokenCounter = 0;
+
         // Collect the messages for the tokens to display
         List<String> otpMessages = new ArrayList<>();
     

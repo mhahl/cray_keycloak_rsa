@@ -23,7 +23,6 @@ class Endpoint {
     private Logger _log = Logger.getLogger(getClass().getName());
     private String _authToken;
     private Configuration _config;
-    private List<String> excludedEndpointPrints = Collections.emptyList(); //Arrays.asList(ENDPOINT_AUTH);
 
     Endpoint(Configuration config) {
         this._config = config;
